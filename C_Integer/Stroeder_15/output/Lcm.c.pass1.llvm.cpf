@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="cpfHTML.xsl"?>
+<certificationProblem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cpf.xsd">
+  <input>
+    <llvm>
+      <function>
+        <name>main</name>
+      </function>
+      <llvmprog>
+define i32 @main() {
+bb:
+  br label %bb3
+bb3:
+  %.01 = phi i32 [LLVMUndefLiteral, %bb], [%.12, %bb10]
+  %.0 = phi i32 [LLVMUndefLiteral, %bb], [%.1, %bb10]
+  %tmp = icmp ne i32 %.01, %.0
+  br i1 %tmp, label %bb4, label %bb11
+bb4:
+  %tmp5 = icmp sgt i32 %.01, %.0
+  br i1 %tmp5, label %bb6, label %bb8
+bb6:
+  %tmp7 = add i32 %.0, undef
+  br label %bb10
+bb8:
+  %tmp9 = add i32 %.01, undef
+  br label %bb10
+bb10:
+  %.12 = phi i32 [%.01, %bb6], [%tmp9, %bb8]
+  %.1 = phi i32 [%tmp7, %bb6], [%.0, %bb8]
+  br label %bb3
+bb11:
+  ret i32 0
+}
+</llvmprog>
+    </llvm>
+  </input>
+  <cpfVersion>2.1</cpfVersion>
+  <proof>
+    <unknownInputProof>
+      <unknownAssumption>
+        <llvm>
+          <function>
+            <name>main</name>
+          </function>
+          <llvmprog>
+define i32 @main() {
+bb:
+  br label %bb3
+bb3:
+  %.01 = phi i32 [LLVMUndefLiteral, %bb], [%.12, %bb10]
+  %.0 = phi i32 [LLVMUndefLiteral, %bb], [%.1, %bb10]
+  %tmp = icmp ne i32 %.01, %.0
+  br i1 %tmp, label %bb4, label %bb11
+bb4:
+  %tmp5 = icmp sgt i32 %.01, %.0
+  br i1 %tmp5, label %bb6, label %bb8
+bb6:
+  %tmp7 = add i32 %.0, undef
+  br label %bb10
+bb8:
+  %tmp9 = add i32 %.01, undef
+  br label %bb10
+bb10:
+  %.12 = phi i32 [%.01, %bb6], [%tmp9, %bb8]
+  %.1 = phi i32 [%tmp7, %bb6], [%.0, %bb8]
+  br label %bb3
+bb11:
+  ret i32 0
+}
+</llvmprog>
+        </llvm>
+      </unknownAssumption>
+    </unknownInputProof>
+  </proof>
+  <origin>
+    <proofOrigin>
+      <tool>
+        <name>AProVE</name>
+        <version>AProVE Commit ID: unknown</version>
+        <strategy>Statistics for single proof: 0,00 % (0 real / 0 unknown / 1 assumptions / 1 total proof steps)</strategy>
+        <url>http://aprove.informatik.rwth-aachen.de</url>
+      </tool>
+      <toolUser>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+      </toolUser>
+    </proofOrigin>
+    <inputOrigin/>
+  </origin>
+</certificationProblem>

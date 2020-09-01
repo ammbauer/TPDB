@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="cpfHTML.xsl"?>
+<certificationProblem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cpf.xsd">
+  <input>
+    <llvm>
+      <function>
+        <name>main</name>
+      </function>
+      <llvmprog>
+declare i32 @__VERIFIER_nondet_int()
+
+define i32 @main() {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  br label %bb2
+bb2:
+  %.01 = phi i32 [1, %bb], [%tmp6, %bb4]
+  %.0 = phi i32 [1, %bb], [%tmp5, %bb4]
+  %tmp3 = icmp ne i32 %.0, %tmp
+  br i1 %tmp3, label %bb4, label %bb7
+bb4:
+  %tmp5 = mul i32 %.0, %.01
+  %tmp6 = add i32 %.01, 1
+  br label %bb2
+bb7:
+  ret i32 0
+}
+</llvmprog>
+    </llvm>
+  </input>
+  <cpfVersion>2.1</cpfVersion>
+  <proof>
+    <unknownInputProof>
+      <unknownAssumption>
+        <llvm>
+          <function>
+            <name>main</name>
+          </function>
+          <llvmprog>
+declare i32 @__VERIFIER_nondet_int()
+
+define i32 @main() {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  br label %bb2
+bb2:
+  %.01 = phi i32 [1, %bb], [%tmp6, %bb4]
+  %.0 = phi i32 [1, %bb], [%tmp5, %bb4]
+  %tmp3 = icmp ne i32 %.0, %tmp
+  br i1 %tmp3, label %bb4, label %bb7
+bb4:
+  %tmp5 = mul i32 %.0, %.01
+  %tmp6 = add i32 %.01, 1
+  br label %bb2
+bb7:
+  ret i32 0
+}
+</llvmprog>
+        </llvm>
+      </unknownAssumption>
+    </unknownInputProof>
+  </proof>
+  <origin>
+    <proofOrigin>
+      <tool>
+        <name>AProVE</name>
+        <version>AProVE Commit ID: unknown</version>
+        <strategy>Statistics for single proof: 0,00 % (0 real / 0 unknown / 1 assumptions / 1 total proof steps)</strategy>
+        <url>http://aprove.informatik.rwth-aachen.de</url>
+      </tool>
+      <toolUser>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+      </toolUser>
+    </proofOrigin>
+    <inputOrigin/>
+  </origin>
+</certificationProblem>

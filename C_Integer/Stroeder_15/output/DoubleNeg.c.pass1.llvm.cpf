@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="cpfHTML.xsl"?>
+<certificationProblem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cpf.xsd">
+  <input>
+    <llvm>
+      <function>
+        <name>main</name>
+      </function>
+      <llvmprog>
+declare i32 @__VERIFIER_nondet_int()
+
+define i32 @main() {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  %tmp2 = call i32 @__VERIFIER_nondet_int()
+  br label %bb3
+bb3:
+  %.01 = phi i32 [%tmp, %bb], [%tmp7, %bb6]
+  %.0 = phi i32 [%tmp2, %bb], [%tmp8, %bb6]
+  %tmp4 = mul i32 %.01, %.0
+  %tmp5 = icmp sgt i32 %tmp4, 0
+  br i1 %tmp5, label %bb6, label %bb9
+bb6:
+  %tmp7 = sub i32 %.01, 1
+  %tmp8 = sub i32 %.0, 1
+  br label %bb3
+bb9:
+  ret i32 0
+}
+</llvmprog>
+    </llvm>
+  </input>
+  <cpfVersion>2.1</cpfVersion>
+  <proof>
+    <unknownInputProof>
+      <unknownAssumption>
+        <llvm>
+          <function>
+            <name>main</name>
+          </function>
+          <llvmprog>
+declare i32 @__VERIFIER_nondet_int()
+
+define i32 @main() {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  %tmp2 = call i32 @__VERIFIER_nondet_int()
+  br label %bb3
+bb3:
+  %.01 = phi i32 [%tmp, %bb], [%tmp7, %bb6]
+  %.0 = phi i32 [%tmp2, %bb], [%tmp8, %bb6]
+  %tmp4 = mul i32 %.01, %.0
+  %tmp5 = icmp sgt i32 %tmp4, 0
+  br i1 %tmp5, label %bb6, label %bb9
+bb6:
+  %tmp7 = sub i32 %.01, 1
+  %tmp8 = sub i32 %.0, 1
+  br label %bb3
+bb9:
+  ret i32 0
+}
+</llvmprog>
+        </llvm>
+      </unknownAssumption>
+    </unknownInputProof>
+  </proof>
+  <origin>
+    <proofOrigin>
+      <tool>
+        <name>AProVE</name>
+        <version>AProVE Commit ID: unknown</version>
+        <strategy>Statistics for single proof: 0,00 % (0 real / 0 unknown / 1 assumptions / 1 total proof steps)</strategy>
+        <url>http://aprove.informatik.rwth-aachen.de</url>
+      </tool>
+      <toolUser>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+      </toolUser>
+    </proofOrigin>
+    <inputOrigin/>
+  </origin>
+</certificationProblem>

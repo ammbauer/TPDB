@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="cpfHTML.xsl"?>
+<certificationProblem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cpf.xsd">
+  <input>
+    <llvm>
+      <function>
+        <name>main</name>
+      </function>
+      <llvmprog>
+declare i32 @__VERIFIER_nondet_int()
+
+define i32 @main() {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  %tmp3 = call i32 @__VERIFIER_nondet_int()
+  %tmp4 = call i32 @__VERIFIER_nondet_int()
+  br label %bb5
+bb5:
+  %.02 = phi i32 [%tmp3, %bb], [%tmp4, %bb14]
+  %.01 = phi i32 [%tmp, %bb], [%tmp15, %bb14]
+  %.0 = phi i32 [LLVMUndefLiteral, %bb], [%.01, %bb14]
+  %tmp6 = icmp sgt i32 %.01, 0
+  br i1 %tmp6, label %bb7, label %bb12
+bb7:
+  %tmp8 = icmp slt i32 %.01, %.02
+  br i1 %tmp8, label %bb9, label %bb12
+bb9:
+  %tmp10 = mul i32 2, %.0
+  %tmp11 = icmp sgt i32 %.01, %tmp10
+  br label %bb12
+bb12:
+  %tmp13 = phi i1 [0, %bb7], [0, %bb5], [%tmp11, %bb9]
+  br i1 %tmp13, label %bb14, label %bb16
+bb14:
+  %tmp15 = call i32 @__VERIFIER_nondet_int()
+  br label %bb5
+bb16:
+  ret i32 0
+}
+</llvmprog>
+    </llvm>
+  </input>
+  <cpfVersion>2.1</cpfVersion>
+  <proof>
+    <unknownInputProof>
+      <unknownAssumption>
+        <llvm>
+          <function>
+            <name>main</name>
+          </function>
+          <llvmprog>
+declare i32 @__VERIFIER_nondet_int()
+
+define i32 @main() {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  %tmp3 = call i32 @__VERIFIER_nondet_int()
+  %tmp4 = call i32 @__VERIFIER_nondet_int()
+  br label %bb5
+bb5:
+  %.02 = phi i32 [%tmp3, %bb], [%tmp4, %bb14]
+  %.01 = phi i32 [%tmp, %bb], [%tmp15, %bb14]
+  %.0 = phi i32 [LLVMUndefLiteral, %bb], [%.01, %bb14]
+  %tmp6 = icmp sgt i32 %.01, 0
+  br i1 %tmp6, label %bb7, label %bb12
+bb7:
+  %tmp8 = icmp slt i32 %.01, %.02
+  br i1 %tmp8, label %bb9, label %bb12
+bb9:
+  %tmp10 = mul i32 2, %.0
+  %tmp11 = icmp sgt i32 %.01, %tmp10
+  br label %bb12
+bb12:
+  %tmp13 = phi i1 [0, %bb7], [0, %bb5], [%tmp11, %bb9]
+  br i1 %tmp13, label %bb14, label %bb16
+bb14:
+  %tmp15 = call i32 @__VERIFIER_nondet_int()
+  br label %bb5
+bb16:
+  ret i32 0
+}
+</llvmprog>
+        </llvm>
+      </unknownAssumption>
+    </unknownInputProof>
+  </proof>
+  <origin>
+    <proofOrigin>
+      <tool>
+        <name>AProVE</name>
+        <version>AProVE Commit ID: unknown</version>
+        <strategy>Statistics for single proof: 0,00 % (0 real / 0 unknown / 1 assumptions / 1 total proof steps)</strategy>
+        <url>http://aprove.informatik.rwth-aachen.de</url>
+      </tool>
+      <toolUser>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+      </toolUser>
+    </proofOrigin>
+    <inputOrigin/>
+  </origin>
+</certificationProblem>
