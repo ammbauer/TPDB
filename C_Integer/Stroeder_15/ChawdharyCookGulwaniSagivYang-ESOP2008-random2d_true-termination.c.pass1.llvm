@@ -1,0 +1,98 @@
+; ModuleID = 'ChawdharyCookGulwaniSagivYang-ESOP2008-random2d_true-termination.c.pass0.llvm'
+source_filename = "ChawdharyCookGulwaniSagivYang-ESOP2008-random2d_true-termination.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+bb:
+  br label %bb6
+
+bb6:                                              ; preds = %bb33, %bb
+  %.02 = phi i32 [ 0, %bb ], [ %.5, %bb33 ]
+  %.01 = phi i32 [ 0, %bb ], [ %.3, %bb33 ]
+  %.0 = phi i32 [ 0, %bb ], [ %tmp8, %bb33 ]
+  %tmp = icmp slt i32 %.0, 10
+  br i1 %tmp, label %bb7, label %bb34
+
+bb7:                                              ; preds = %bb6
+  %tmp8 = add nsw i32 %.0, 1
+  %tmp9 = call i32 @__VERIFIER_nondet_int()
+  %tmp10 = icmp sge i32 %tmp9, 0
+  br i1 %tmp10, label %bb11, label %bb33
+
+bb11:                                             ; preds = %bb7
+  %tmp12 = icmp sle i32 %tmp9, 3
+  br i1 %tmp12, label %bb13, label %bb33
+
+bb13:                                             ; preds = %bb11
+  %tmp14 = icmp eq i32 %tmp9, 0
+  br i1 %tmp14, label %bb15, label %bb17
+
+bb15:                                             ; preds = %bb13
+  %tmp16 = add nsw i32 %.01, 1
+  br label %bb32
+
+bb17:                                             ; preds = %bb13
+  %tmp18 = icmp eq i32 %tmp9, 1
+  br i1 %tmp18, label %bb19, label %bb21
+
+bb19:                                             ; preds = %bb17
+  %tmp20 = sub nsw i32 %.01, 1
+  br label %bb31
+
+bb21:                                             ; preds = %bb17
+  %tmp22 = icmp eq i32 %tmp9, 2
+  br i1 %tmp22, label %bb23, label %bb25
+
+bb23:                                             ; preds = %bb21
+  %tmp24 = add nsw i32 %.02, 1
+  br label %bb30
+
+bb25:                                             ; preds = %bb21
+  %tmp26 = icmp eq i32 %tmp9, 3
+  br i1 %tmp26, label %bb27, label %bb29
+
+bb27:                                             ; preds = %bb25
+  %tmp28 = sub nsw i32 %.02, 1
+  br label %bb29
+
+bb29:                                             ; preds = %bb27, %bb25
+  %.13 = phi i32 [ %tmp28, %bb27 ], [ %.02, %bb25 ]
+  br label %bb30
+
+bb30:                                             ; preds = %bb29, %bb23
+  %.24 = phi i32 [ %tmp24, %bb23 ], [ %.13, %bb29 ]
+  br label %bb31
+
+bb31:                                             ; preds = %bb30, %bb19
+  %.35 = phi i32 [ %.02, %bb19 ], [ %.24, %bb30 ]
+  %.1 = phi i32 [ %tmp20, %bb19 ], [ %.01, %bb30 ]
+  br label %bb32
+
+bb32:                                             ; preds = %bb31, %bb15
+  %.4 = phi i32 [ %.02, %bb15 ], [ %.35, %bb31 ]
+  %.2 = phi i32 [ %tmp16, %bb15 ], [ %.1, %bb31 ]
+  br label %bb33
+
+bb33:                                             ; preds = %bb32, %bb11, %bb7
+  %.5 = phi i32 [ %.4, %bb32 ], [ %.02, %bb11 ], [ %.02, %bb7 ]
+  %.3 = phi i32 [ %.2, %bb32 ], [ %.01, %bb11 ], [ %.01, %bb7 ]
+  br label %bb6
+
+bb34:                                             ; preds = %bb6
+  ret i32 0
+}
+
+declare i32 @__VERIFIER_nondet_int() #1
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}

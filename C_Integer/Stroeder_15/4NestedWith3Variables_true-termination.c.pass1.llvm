@@ -1,0 +1,47 @@
+; ModuleID = '4NestedWith3Variables_true-termination.c.pass0.llvm'
+source_filename = "4NestedWith3Variables_true-termination.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  %tmp3 = call i32 @__VERIFIER_nondet_int()
+  %tmp4 = call i32 @__VERIFIER_nondet_int()
+  br label %bb5
+
+bb5:                                              ; preds = %bb7, %bb
+  %.02 = phi i32 [ %tmp4, %bb ], [ %tmp15, %bb7 ]
+  %.01 = phi i32 [ %tmp3, %bb ], [ %tmp12, %bb7 ]
+  %.0 = phi i32 [ %tmp, %bb ], [ %tmp9, %bb7 ]
+  %tmp6 = icmp sgt i32 %.0, 0
+  br i1 %tmp6, label %bb7, label %bb16
+
+bb7:                                              ; preds = %bb5
+  %tmp8 = add nsw i32 %.0, %.01
+  %tmp9 = sub nsw i32 %tmp8, 1
+  %tmp10 = mul nsw i32 3, %.01
+  %tmp11 = mul nsw i32 4, %.02
+  %tmp12 = sub nsw i32 %tmp10, %tmp11
+  %tmp13 = mul nsw i32 4, %.01
+  %tmp14 = mul nsw i32 3, %.02
+  %tmp15 = add nsw i32 %tmp13, %tmp14
+  br label %bb5
+
+bb16:                                             ; preds = %bb5
+  ret i32 0
+}
+
+declare i32 @__VERIFIER_nondet_int() #1
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}

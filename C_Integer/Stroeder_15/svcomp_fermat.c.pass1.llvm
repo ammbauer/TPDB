@@ -1,0 +1,69 @@
+; ModuleID = 'svcomp_fermat.c.pass0.llvm'
+source_filename = "svcomp_fermat.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+bb:
+  br label %bb5
+
+bb5:                                              ; preds = %bb26, %bb
+  %.03 = phi i32 [ 1, %bb ], [ %.14, %bb26 ]
+  %.01 = phi i32 [ 1, %bb ], [ %.2, %bb26 ]
+  %.0 = phi i32 [ 1, %bb ], [ %.1, %bb26 ]
+  %tmp = mul nsw i32 %.03, %.03
+  %tmp6 = mul nsw i32 %tmp, %.03
+  %tmp7 = mul nsw i32 %.01, %.01
+  %tmp8 = mul nsw i32 %tmp7, %.01
+  %tmp9 = mul nsw i32 %.0, %.0
+  %tmp10 = mul nsw i32 %tmp9, %.0
+  %tmp11 = add nsw i32 %tmp8, %tmp10
+  %tmp12 = icmp ne i32 %tmp6, %tmp11
+  br i1 %tmp12, label %bb13, label %bb15
+
+bb13:                                             ; preds = %bb5
+  %tmp14 = icmp sle i32 %.0, 1000
+  br label %bb15
+
+bb15:                                             ; preds = %bb13, %bb5
+  %tmp16 = phi i1 [ false, %bb5 ], [ %tmp14, %bb13 ]
+  br i1 %tmp16, label %bb17, label %bb27
+
+bb17:                                             ; preds = %bb15
+  %tmp18 = add nsw i32 %.03, 1
+  %tmp19 = icmp sgt i32 %tmp18, 1000
+  br i1 %tmp19, label %bb20, label %bb22
+
+bb20:                                             ; preds = %bb17
+  %tmp21 = add nsw i32 %.01, 1
+  br label %bb22
+
+bb22:                                             ; preds = %bb20, %bb17
+  %.14 = phi i32 [ 1, %bb20 ], [ %tmp18, %bb17 ]
+  %.12 = phi i32 [ %tmp21, %bb20 ], [ %.01, %bb17 ]
+  %tmp23 = icmp sgt i32 %.12, 1000
+  br i1 %tmp23, label %bb24, label %bb26
+
+bb24:                                             ; preds = %bb22
+  %tmp25 = add nsw i32 %.0, 1
+  br label %bb26
+
+bb26:                                             ; preds = %bb24, %bb22
+  %.2 = phi i32 [ 1, %bb24 ], [ %.12, %bb22 ]
+  %.1 = phi i32 [ %tmp25, %bb24 ], [ %.0, %bb22 ]
+  br label %bb5
+
+bb27:                                             ; preds = %bb15
+  ret i32 0
+}
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}

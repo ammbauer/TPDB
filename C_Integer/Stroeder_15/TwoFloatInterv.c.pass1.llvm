@@ -1,0 +1,74 @@
+; ModuleID = 'TwoFloatInterv.c.pass0.llvm'
+source_filename = "TwoFloatInterv.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+bb:
+  %tmp = call i32 @__VERIFIER_nondet_int()
+  br label %bb1
+
+bb1:                                              ; preds = %bb21, %bb
+  %.0 = phi i32 [ %tmp, %bb ], [ %.3, %bb21 ]
+  %tmp2 = icmp sgt i32 %.0, 0
+  br i1 %tmp2, label %bb3, label %bb5
+
+bb3:                                              ; preds = %bb1
+  %tmp4 = icmp slt i32 %.0, 50
+  br label %bb5
+
+bb5:                                              ; preds = %bb3, %bb1
+  %tmp6 = phi i1 [ false, %bb1 ], [ %tmp4, %bb3 ]
+  br i1 %tmp6, label %bb7, label %bb22
+
+bb7:                                              ; preds = %bb5
+  %tmp8 = icmp slt i32 %.0, 20
+  br i1 %tmp8, label %bb9, label %bb11
+
+bb9:                                              ; preds = %bb7
+  %tmp10 = sub nsw i32 %.0, 1
+  br label %bb11
+
+bb11:                                             ; preds = %bb9, %bb7
+  %.1 = phi i32 [ %tmp10, %bb9 ], [ %.0, %bb7 ]
+  %tmp12 = icmp sgt i32 %.1, 10
+  br i1 %tmp12, label %bb13, label %bb15
+
+bb13:                                             ; preds = %bb11
+  %tmp14 = add nsw i32 %.1, 1
+  br label %bb15
+
+bb15:                                             ; preds = %bb13, %bb11
+  %.2 = phi i32 [ %tmp14, %bb13 ], [ %.1, %bb11 ]
+  %tmp16 = icmp sle i32 30, %.2
+  br i1 %tmp16, label %bb17, label %bb21
+
+bb17:                                             ; preds = %bb15
+  %tmp18 = icmp sle i32 %.2, 40
+  br i1 %tmp18, label %bb19, label %bb21
+
+bb19:                                             ; preds = %bb17
+  %tmp20 = sub nsw i32 %.2, 1
+  br label %bb21
+
+bb21:                                             ; preds = %bb19, %bb17, %bb15
+  %.3 = phi i32 [ %tmp20, %bb19 ], [ %.2, %bb17 ], [ %.2, %bb15 ]
+  br label %bb1
+
+bb22:                                             ; preds = %bb5
+  ret i32 0
+}
+
+declare i32 @__VERIFIER_nondet_int() #1
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}

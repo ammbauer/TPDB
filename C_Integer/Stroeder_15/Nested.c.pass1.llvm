@@ -1,0 +1,46 @@
+; ModuleID = 'Nested.c.pass0.llvm'
+source_filename = "Nested.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+bb:
+  br label %bb2
+
+bb2:                                              ; preds = %bb9, %bb
+  %.01 = phi i32 [ 0, %bb ], [ %tmp10, %bb9 ]
+  %.0 = phi i32 [ 3, %bb ], [ %.1, %bb9 ]
+  %tmp = icmp slt i32 %.01, 10
+  br i1 %tmp, label %bb3, label %bb11
+
+bb3:                                              ; preds = %bb2
+  br label %bb4
+
+bb4:                                              ; preds = %bb6, %bb3
+  %.1 = phi i32 [ %.0, %bb3 ], [ %tmp8, %bb6 ]
+  %tmp5 = icmp slt i32 %.1, 12
+  br i1 %tmp5, label %bb6, label %bb9
+
+bb6:                                              ; preds = %bb4
+  %tmp7 = sub nsw i32 %.1, 1
+  %tmp8 = add nsw i32 %tmp7, 2
+  br label %bb4
+
+bb9:                                              ; preds = %bb4
+  %tmp10 = add nsw i32 %.01, 1
+  br label %bb2
+
+bb11:                                             ; preds = %bb2
+  ret i32 0
+}
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}

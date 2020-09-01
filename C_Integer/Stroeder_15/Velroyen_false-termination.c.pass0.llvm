@@ -1,0 +1,77 @@
+; ModuleID = 'Velroyen_false-termination.c'
+source_filename = "Velroyen_false-termination.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  store i32 0, i32* %1, align 4
+  br label %3
+
+3:                                                ; preds = %26, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp ne i32 %4, 0
+  br i1 %5, label %6, label %27
+
+6:                                                ; preds = %3
+  %7 = load i32, i32* %2, align 4
+  %8 = icmp sle i32 -5, %7
+  br i1 %8, label %9, label %25
+
+9:                                                ; preds = %6
+  %10 = load i32, i32* %2, align 4
+  %11 = icmp sle i32 %10, 35
+  br i1 %11, label %12, label %25
+
+12:                                               ; preds = %9
+  %13 = load i32, i32* %2, align 4
+  %14 = icmp slt i32 %13, 0
+  br i1 %14, label %15, label %16
+
+15:                                               ; preds = %12
+  store i32 -5, i32* %2, align 4
+  br label %24
+
+16:                                               ; preds = %12
+  %17 = load i32, i32* %2, align 4
+  %18 = icmp sgt i32 %17, 30
+  br i1 %18, label %19, label %20
+
+19:                                               ; preds = %16
+  store i32 35, i32* %2, align 4
+  br label %23
+
+20:                                               ; preds = %16
+  %21 = load i32, i32* %2, align 4
+  %22 = sub nsw i32 %21, 1
+  store i32 %22, i32* %2, align 4
+  br label %23
+
+23:                                               ; preds = %20, %19
+  br label %24
+
+24:                                               ; preds = %23, %15
+  br label %26
+
+25:                                               ; preds = %9, %6
+  store i32 0, i32* %2, align 4
+  br label %26
+
+26:                                               ; preds = %25, %24
+  br label %3
+
+27:                                               ; preds = %3
+  ret i32 0
+}
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}

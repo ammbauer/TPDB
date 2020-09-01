@@ -1,0 +1,82 @@
+; ModuleID = 'MirrorIntervSim.c'
+source_filename = "MirrorIntervSim.c"
+target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-apple-macosx10.15.0"
+
+; Function Attrs: noinline nounwind ssp uwtable
+define i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  store i32 0, i32* %1, align 4
+  %3 = call i32 @__VERIFIER_nondet_int()
+  store i32 %3, i32* %2, align 4
+  br label %4
+
+4:                                                ; preds = %27, %0
+  %5 = load i32, i32* %2, align 4
+  %6 = icmp ne i32 %5, 0
+  br i1 %6, label %7, label %28
+
+7:                                                ; preds = %4
+  %8 = load i32, i32* %2, align 4
+  %9 = icmp sle i32 -5, %8
+  br i1 %9, label %10, label %26
+
+10:                                               ; preds = %7
+  %11 = load i32, i32* %2, align 4
+  %12 = icmp sle i32 %11, 35
+  br i1 %12, label %13, label %26
+
+13:                                               ; preds = %10
+  %14 = load i32, i32* %2, align 4
+  %15 = icmp slt i32 %14, 0
+  br i1 %15, label %16, label %17
+
+16:                                               ; preds = %13
+  store i32 -5, i32* %2, align 4
+  br label %25
+
+17:                                               ; preds = %13
+  %18 = load i32, i32* %2, align 4
+  %19 = icmp sgt i32 %18, 30
+  br i1 %19, label %20, label %21
+
+20:                                               ; preds = %17
+  store i32 35, i32* %2, align 4
+  br label %24
+
+21:                                               ; preds = %17
+  %22 = load i32, i32* %2, align 4
+  %23 = sub nsw i32 %22, 1
+  store i32 %23, i32* %2, align 4
+  br label %24
+
+24:                                               ; preds = %21, %20
+  br label %25
+
+25:                                               ; preds = %24, %16
+  br label %27
+
+26:                                               ; preds = %10, %7
+  store i32 0, i32* %2, align 4
+  br label %27
+
+27:                                               ; preds = %26, %25
+  br label %4
+
+28:                                               ; preds = %4
+  ret i32 0
+}
+
+declare i32 @__VERIFIER_nondet_int() #1
+
+attributes #0 = { noinline nounwind ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "darwin-stkchk-strong-link" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "probe-stack"="___chkstk_darwin" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 2, !"SDK Version", [3 x i32] [i32 10, i32 15, i32 6]}
+!1 = !{i32 1, !"wchar_size", i32 4}
+!2 = !{i32 7, !"PIC Level", i32 2}
+!3 = !{!"Apple clang version 11.0.3 (clang-1103.0.32.62)"}
